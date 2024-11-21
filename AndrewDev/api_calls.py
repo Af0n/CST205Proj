@@ -1,5 +1,6 @@
 import requests
 import json
+from place import *
 
 places = []
 
@@ -28,8 +29,12 @@ def text_search_from(lat, long):
         "rankPreference": "DISTANCE"
     }
 
-    places = make_api_call(url, headers, payload)
-    print(places)
+    json_places = make_api_call(url, headers, payload)
+
+    place_array = []
+
+    for place in json_places:
+        new_place = Place(place[])
 
 def make_api_call(url, headers, payload):
     response = requests.post(url, headers=headers, data=json.dumps(payload))
