@@ -3,9 +3,13 @@ import json
 from place import *
 from secret import key
 
-places = []
 
-def text_search_from(lat, long):
+# returns an array of Place objects based on the top results from the API
+# radius is in meters, max 50000
+def text_search_from(lat, long, number, radius):
+    if radius < 0:
+        radius = 0
+
     url = "https://places.googleapis.com/v1/places:searchText"
 
     api_key = key
@@ -23,15 +27,15 @@ def text_search_from(lat, long):
                 "latitude": lat,
                 "longitude": long
             },
-            "radius": 5000
+            "radius": min(radius, 50000)
             }
         },
-        "maxResultCount": 10,
+        "maxResultCount": number,
         "rankPreference": "DISTANCE"
     }
 
     json_places = make_api_call_json(url, headers, payload)
-    print(json_places)
+    # print(json_places)
 
     place_array = []
     
@@ -48,10 +52,17 @@ def text_search_from(lat, long):
 
         new_place = Place(phone, address, maps, web, name, gID)
 
-        print(new_place)
+        place_array.append(new_place)
+    
+    return place_array
 
 def make_api_call_json(url, headers, payload):
+    print(f"=== API Call ===\nURL: {url}\nHEADERS: {headers}\nPAYLOAD:{payload}")
     response = requests.post(url, headers=headers, data=json.dumps(payload))
-
+    if response.status_code == 200:
+        print("Call successfull")
+    else:
+        print("Failure")
+    print("================")
     return response.json().get("places", [])
     

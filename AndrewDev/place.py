@@ -7,6 +7,7 @@ class Place():
     imgSrc = ""
 
     def __init__(self, phone, address, maps, web, name, gID):
+        print("Creating new Place object...")
         self.phone = phone
         self.address = address
         self.mapsLink = maps
@@ -15,6 +16,7 @@ class Place():
         self.gID = gID
         
         self.imgSrc = self.get_image_src()
+        print("Place object created")
 
     def get_image_src(self):
         print("Place.get_image_src() not implemented")

@@ -1,8 +1,10 @@
 from place import *
 from api_calls import *
-
 print(test)
+print("\n\n")
 
-text_search_from(36.663024, -121.769599)
+places = text_search_from(36.663024, -121.769599, 3, 5000)
 
-print(places)
+print("\n\n")
+for place in places:
+    print(place)
