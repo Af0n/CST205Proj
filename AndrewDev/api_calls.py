@@ -12,7 +12,7 @@ def text_search_from(lat, long):
     headers = {
         'Content-Type': 'application/json',
         'X-Goog-Api-Key': api_key,
-        'X-Goog-FieldMask': 'places.displayName,places.formattedAddress'
+        'X-Goog-FieldMask': 'places.nationalPhoneNumber,places.formattedAddress,places.googleMapsUri,places.websiteUri,places.displayName,places.photos'
     }
 
     payload = {
@@ -30,16 +30,16 @@ def text_search_from(lat, long):
         "rankPreference": "DISTANCE"
     }
 
-    json_places = make_api_call(url, headers, payload)
+    json_places = make_api_call_json(url, headers, payload)
 
     place_array = []
-
+    
     for place in json_places:
-        new_place = Place(place[])
+        phone = place.get("nationalPhoneNumber", None)
+        print(phone)
 
-def make_api_call(url, headers, payload):
+def make_api_call_json(url, headers, payload):
     response = requests.post(url, headers=headers, data=json.dumps(payload))
 
-    if response.status_code == 200:
-        return response.json().get("places", [])
+    return response.json().get("places", [])
     
