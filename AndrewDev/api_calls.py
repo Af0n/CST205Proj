@@ -1,13 +1,14 @@
 import requests
 import json
 from place import *
+from secret import key
 
 places = []
 
 def text_search_from(lat, long):
     url = "https://places.googleapis.com/v1/places:searchText"
 
-    api_key = "AIzaSyCEFg5vEo2LHnwTf4NkQlrs9F0e8RNuAYI"
+    api_key = key
     headers = {
         'Content-Type': 'application/json',
         'X-Goog-Api-Key': api_key,
