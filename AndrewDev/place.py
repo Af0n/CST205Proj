@@ -17,7 +17,7 @@ class Place():
         self.imgSrc = self.get_image_src()
 
     def get_image_src(self):
-        print("get_image_src not implemented")
+        print("Place.get_image_src() not implemented")
         # make API call to get image from Google Places Photos (New) using self.gID
         return None
     
