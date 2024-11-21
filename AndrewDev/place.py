@@ -22,6 +22,6 @@ class Place():
         return None
     
     def __str__(self):
-        return f"=== Place ===\nName: {self.name}\nAddress: {self.address}\nPhone: {self.phone}\nGoogleMaps: {self.mapsLink}\nWebsite: {self.webLink}\nImage Src: {self.imgSrc}\n============="
+        return f"=== Place ===\nName: {self.name}\nAddress: {self.address}\nPhone: {self.phone}\nGoogleMaps: {self.mapsLink}\nWebsite: {self.webLink}\nGoogleID: {self.gID}\nImage Src: {self.imgSrc}\n============="
     
 test = Place("(555) 5555 5555", "123 Test Street", "Test Map Link", "Test Web Link", "Test's Center for Health Testing", "Google ID for finding images")
