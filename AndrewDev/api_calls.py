@@ -4,12 +4,14 @@ from place import Place
 from secret import key
 from PIL import Image
 
+# returns a PIL Image object from API
 def picture_search(gID):
     api_key = key
     url = f"https://places.googleapis.com/v1/{gID}/media?key={api_key}&maxHeightPx=4800"
 
     img = Image.open(requests.get(url, stream=True).raw)
     return img
+
 # returns an array of Place objects based on the top results from the API
 # radius is in meters, max 50000
 def text_search_from(lat, long, number, radius):
