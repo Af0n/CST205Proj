@@ -67,7 +67,7 @@ def text_search_from(lat, long, number, radius):
 
         new_place = Place(phone, address, maps, web, name, gID, src)
 
-        place_array.append(new_place)
+        place_array.append(new_place) 
     
     return place_array
 
