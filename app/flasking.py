@@ -9,5 +9,5 @@ bootstrap = Bootstrap5(app)
 
 @app.route('/')
 def home():
-    list = text_search_from(36.663024, -121.769599, 3, 5000)
+    list = text_search_from(36.663024, -121.769599, 10, 5000)
     return render_template('home.html', places = list)
