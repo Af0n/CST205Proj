@@ -1,18 +1,18 @@
 from PIL import Image
 
 class Place():
-    phone = ""
-    address = ""
-    mapsLink = ""
-    webLink = ""
-    name = ""
-    imgSrc = ""
+    phone = None
+    address = None
+    mapsLink = None
+    webLink = None
+    name = None
+    imgSrc = None
 
-    def show_img(self):
-        if self.imgSrc is not None:
-            self.imgSrc.show()
-        else:
-            print("No Image Available")
+    # def show_img(self):
+    #     if self.imgSrc is not None:
+    #         self.imgSrc.show()
+    #     else:
+    #         print("No Image Available")
 
     def __init__(self, phone, address, maps, web, name, gID, src):
         print("Creating new Place object...")

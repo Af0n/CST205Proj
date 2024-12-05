@@ -4,13 +4,13 @@ from place import Place
 from secret import key
 from PIL import Image
 
-# returns a PIL Image object from API
+# returns a PIL image object from API
 def picture_search(gID):
     api_key = key
-    url = f"https://places.googleapis.com/v1/{gID}/media?key={api_key}&maxHeightPx=4800"
-
-    img = Image.open(requests.get(url, stream=True).raw)
-    return img
+    url = f"https://places.googleapis.com/v1/{gID}/media?key={api_key}&maxHeightPx=4800&skipHttpRedirect=true"
+    response = requests.get(url)
+    src = response.json().get("photoUri", None)
+    return src
 
 # returns an array of Place objects based on the top results from the API
 # radius is in meters, max 50000
@@ -43,7 +43,7 @@ def text_search_from(lat, long, number, radius):
     }
 
     json_places = make_api_call_json(url, headers, payload)
-    # print(json_places)
+    print(json_places)
 
     place_array = []
     
@@ -51,7 +51,7 @@ def text_search_from(lat, long, number, radius):
         phone = place.get("nationalPhoneNumber", None)
         address = place.get("formattedAddress", None)
         maps = place.get("googleMapsUri", None)
-        web = place.get("googleMapsUri", None)
+        web = place.get("websiteUri", None)
 
         gID = place.get("photos", None) # photos is an array of dictionaries
         if gID is not None:
@@ -60,6 +60,7 @@ def text_search_from(lat, long, number, radius):
             print(src)
         else:
             src = None
+            print("No photos")
 
         name = place.get("displayName", None) # displayName is a dictionary
         if name is not None:
