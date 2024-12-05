@@ -43,7 +43,7 @@ def text_search_from(lat, long, number, radius):
     }
 
     json_places = make_api_call_json(url, headers, payload)
-    # print(json_places)
+    print(json_places)
 
     place_array = []
     
@@ -51,7 +51,7 @@ def text_search_from(lat, long, number, radius):
         phone = place.get("nationalPhoneNumber", None)
         address = place.get("formattedAddress", None)
         maps = place.get("googleMapsUri", None)
-        web = place.get("googleMapsUri", None)
+        web = place.get("websiteUri", None)
 
         gID = place.get("photos", None) # photos is an array of dictionaries
         if gID is not None:

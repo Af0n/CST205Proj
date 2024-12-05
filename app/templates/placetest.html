@@ -11,9 +11,11 @@
         <h3>{{place.name}}</h3>
         <p>{{place.address}}, {{place.phone}}</p>
         {% if place.imgSrc is not none %}
-            <img src={{place.imgSrc}}>
+            <img src={{place.imgSrc}} style="max-width: 90%;">
         {% endif %}
             <p>No Image Available</p>
+        <a href="{{ place.mapsLink }}" target="_blank">Google Maps</a>
+        <a href="{{ place.webLink }}" target="_blank">Website</a>
     {% endfor %}
 </body>
 </html>
