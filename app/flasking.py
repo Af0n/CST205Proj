@@ -10,4 +10,6 @@ bootstrap = Bootstrap5(app)
 @app.route('/')
 def home():
     list = text_search_from(36.663024, -121.769599, 10, 5000)
+    for place in list:
+        print(place.imgSrc)
     return render_template('home.html', places = list)

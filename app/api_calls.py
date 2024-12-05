@@ -59,8 +59,8 @@ def text_search_from(lat, long, number, radius):
             src = picture_search(gID) # get actual image
             print(src)
         else:
-            print("No photos")
             src = None
+            print("No photos")
 
         name = place.get("displayName", None) # displayName is a dictionary
         if name is not None:
