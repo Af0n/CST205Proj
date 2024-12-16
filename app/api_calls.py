@@ -1,8 +1,7 @@
-import requests
+import requests # type: ignore
 import json
 from place import Place
 from secret import key
-from PIL import Image
 
 # returns a PIL image object from API
 def picture_search(gID):

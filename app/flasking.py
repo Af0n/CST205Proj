@@ -14,11 +14,16 @@ place_list = []
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', locations = place_list)
+
+
+@app.route('/detail/<int:index>')
+def inspect(index):
+    #Azrael, takes in t
+    return render_template('placetest.html', places = [place_list[index]])
 
 @app.route('/placetest')
 def place_test():
     # temporary location latitude/longitude
     place_list = text_search_from(36.663024, -121.769599, 10, 5000)
     return render_template('placetest.html', places = place_list)
-
