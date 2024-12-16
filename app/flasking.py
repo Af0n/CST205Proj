@@ -18,12 +18,12 @@ def index():
     return render_template('index.html', locations = places)
 
 
-@app.route('/detail/<int:index>',methods=['GET'])
-def inspect():
+@app.route('/detail/<int:index>')
+def inspect(index):
     #Azrael, takes in t
-    return render_template('placetest.html', place = places[index])
+    return render_template('placetest.html', places = [places[index]])
 
 @app.route('/placetest')
 def place_test():
     # temporary location latitude/longitude
-    return render_template('placetest.html', location = places)
+    return render_template('placetest.html', places = places)

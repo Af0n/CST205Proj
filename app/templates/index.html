@@ -41,7 +41,7 @@
             <p> Locations ordered closest to farthest. </p>
             <!-- Create three buttons here, In the future set up a for loop here to make the required amount of buttons -->
             <div class="btn-group-vertical">
-              {% for i in range(locations.length) %}
+              {% for i in range(locations|length) %}
                 <button> <a href="{{ url_for('inspect', index=i ) }}" a> {{i}}  
                 <!-- <button> <a href="https://www.royalroad.com/home" a> <button>
                 <button> <a href="https://google.com" a> <button> -->
