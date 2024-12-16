@@ -43,7 +43,7 @@ def text_search_from(lat, long, number, radius):
     }
 
     json_places = make_api_call_json(url, headers, payload)
-    print(json_places)
+    # print(json_places)
 
     place_array = []
     
