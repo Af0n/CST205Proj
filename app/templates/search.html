@@ -10,7 +10,7 @@
 <body>
       <div class="card mt-4">
         <div class="card-body">
-          <form method="POST" action="/">
+          <form method="POST" action="/postsearch">
             {{form.csrf_token }}
             {{form.address.label}} 
             {{form.address(size=32) }}
@@ -20,5 +20,7 @@
           </form>
         </div>
     </div>
+    <br>
+    <p>{{ msg }}</p>
 </body>
 </html>

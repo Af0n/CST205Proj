@@ -44,7 +44,7 @@
             <!-- Create three buttons here, In the future set up a for loop here to make the required amount of buttons -->
             <div class="btn-group-vertical">
               <center>
-                <button v> <a href="/search" a> Search </a></button>
+                <button v> <a href="{{ url_for('search') }}" a> Search </a></button>
               {% for i in range(locations|length) %}
                 <button value = i> <a href="{{ url_for('inspect', index=i ) }}" a> {{ locations[i].name }} </a></button>
                 <!-- <button> <a href="https://www.royalroad.com/home" a> <button>
