@@ -80,4 +80,52 @@ def make_api_call_json(url, headers, payload):
         print("Failure")
     print("================")
     return response.json().get("places", [])
+
+def convert_bad_address_to_lat_long(address):
+    api_key = key
+
+    url = f"https://addressvalidation.googleapis.com/v1:validateAddress?key={api_key}"
+
+    payload = {
+        "address": {
+            "regionCode": "US",
+            "addressLines": [address]
+        }
+    }
+
+    headers = {
+        "Content-Type": "application/json"
+    }
+
+    # Make the POST request
+    print(f"=== API Call ===\nURL: {url}\nHEADERS: {headers}\nPAYLOAD:{payload}")
+    response = requests.post(url, headers=headers, data=json.dumps(payload))
+    if response.status_code == 200:
+        print("Call successfull")
+    else:
+        print("Failure")
+    print("================")
+    geocode_json = response.json().get("result", None).get("geocode", None)
+    print(geocode_json)
+
+    if(validate_bounds(geocode_json["bounds"])):
+        # print("Valid Bounds")
+        return (geocode_json["location"]["latitude"], geocode_json["location"]["longitude"])
     
+    # print("Invalid Bounds")
+    return None
+
+# bounds is the 'bounds' dict from the json resonse in convert_bad_address_to_lat_long
+def validate_bounds(bounds):
+    lat_check = abs(bounds["high"]["latitude"] - bounds["low"]["latitude"]) < 0.1
+    long_check = abs(bounds["high"]["longitude"] - bounds["low"]["longitude"]) < 0.1
+    return lat_check and long_check
+
+def converter(bad_address, range):
+    lat_long_tuple = convert_bad_address_to_lat_long(bad_address)
+
+    if(lat_long_tuple is None):
+        print("Address too broad")
+        return []
+    
+    return text_search_from(lat_long_tuple[0], lat_long_tuple[1], 10, range)

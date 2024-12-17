@@ -25,5 +25,6 @@ def inspect(index):
 @app.route('/placetest')
 def place_test():
     # temporary location latitude/longitude
-    place_list = text_search_from(36.663024, -121.769599, 10, 5000)
+    global place_list 
+    place_list = converter("San Francisco Tenderloin", 5000)
     return render_template('placetest.html', places = place_list)
