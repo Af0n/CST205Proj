@@ -121,3 +121,10 @@ def validate_bounds(bounds):
     long_check = bounds["low"]["longitude"] - bounds["high"]["longitude"] < 0.1
     return lat_check and long_check
 
+def converter(bad_address, range):
+    lat_long_tuple = convert_bad_address_to_lat_long(bad_address)
+
+    if(lat_long_tuple is None):
+        return None
+    
+    return text_search_from(lat_long_tuple[0], lat_long_tuple[1], 10, range)
