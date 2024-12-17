@@ -14,6 +14,7 @@ place_list = []
 
 @app.route('/')
 def index():
+    convert_bad_address_to_lat_long("USA")
     return render_template('index.html', locations = place_list)
 
 
@@ -25,5 +26,6 @@ def inspect(index):
 @app.route('/placetest')
 def place_test():
     # temporary location latitude/longitude
+    global place_list 
     place_list = text_search_from(36.663024, -121.769599, 10, 5000)
     return render_template('placetest.html', places = place_list)
