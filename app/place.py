@@ -1,5 +1,3 @@
-from PIL import Image
-
 class Place():
     phone = None
     address = None
