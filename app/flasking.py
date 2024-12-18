@@ -31,7 +31,7 @@ class searchInfo(FlaskForm):
         validators=[DataRequired()]
     )
     range = IntegerField(
-        'Range(in meters)', 
+        'Range', 
         validators=[DataRequired()]
     )
 
