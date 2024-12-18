@@ -46,6 +46,7 @@ def text_search_from(lat, long, number, radius):
 
     place_array = []
     
+    # build each Place object 
     for place in json_places:
         phone = place.get("nationalPhoneNumber", None)
         address = place.get("formattedAddress", None)
