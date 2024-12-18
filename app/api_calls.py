@@ -1,3 +1,13 @@
+"""
+Title The First Step
+Course 205 Multimedia Programming
+Project Members Andrew, Azrael, Zaheem
+
+api_calls.py is entirely Andrew's work (hi it's me typing!)
+I used these functions in combination with a custom class to store the information.
+I made the class to make it easier for my other teammates to use.
+"""
+
 import requests # type: ignore
 import json
 from place import Place
