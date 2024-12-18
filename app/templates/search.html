@@ -1,26 +1,41 @@
 <!-- Azrael Finished Search On 12/16/2024 -->
+<!-- Zaheem edited Search with styles On 12/17/2024 -->
 <!doctype html>
 <html lang="en">
   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Search Page</title>
-      {{ bootstrap.load_css() }}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>The First Step</title>
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   </head>
-<body>
-      <div class="card mt-4">
+  <body>
+    <div class="container mt-5">
+      <div class="text-center">
+        <h1 class="display-4">The First Step</h1>
+        <p class="lead">Locate mental health services near you.</p>
+      </div>
+      <div class="card mt-4 shadow-sm">
         <div class="card-body">
-          <form method="POST" action="/postsearch">
-            {{form.csrf_token }}
-            {{form.address.label}} 
-            {{form.address(size=32) }}
-            {{form.range.label}} 
-            {{form.range(size=12) }}
-            <input type="submit" value="Submit">
+          <form method="POST" action="/postsearch" class="needs-validation" novalidate>
+            {{ form.csrf_token }}
+            <div class="form-group">
+              <label for="address">{{ form.address.label }}</label>
+              {{ form.address(class="form-control", placeholder="Enter your address") }}
+            </div>
+            <div class="form-group">
+              <label for="range">{{ form.range.label }}</label>
+              {{ form.range(class="form-control", placeholder="Enter search range in miles") }}
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg mt-3">Search</button>
+            </div>
           </form>
         </div>
+      </div>
+      <div class="mt-4 text-center">
+        <p class="text-muted">{{ msg }}</p>
+      </div>
     </div>
-    <br>
-    <p>{{ msg }}</p>
-</body>
+  </body>
 </html>
