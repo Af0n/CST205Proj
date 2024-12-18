@@ -1,8 +1,11 @@
 # READ ME
 
-## Title: The First Step        Team Members: Andrew, Azrael, Zaheem        Class: CST205 Multimedia Design      Programming Date: 12/18/2024 
+## Title: The First Step
+Team Members: Andrew, Azrael, Zaheem  
+Class: CST205 Multimedia Design  
+Programming Date: 12/18/2024   
 
-## This Flask web application allows users to search for mental health support services and displays the results in a user-friendly and responsive design using Bootstrap. The application includes features such as dynamically generated search results, image handling, and navigation to detailed resources.
+This Flask web application allows users to search for mental health support services and displays the results in a user-friendly and responsive design using Bootstrap. The application includes features such as dynamically generated search results, image handling, and navigation to detailed resources.
 
 
 ### Features
