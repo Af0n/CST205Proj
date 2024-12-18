@@ -81,7 +81,9 @@ def make_api_call_json(url, headers, payload):
     print("================")
     return response.json().get("places", [])
 
+# converts a text string into a latitude, longitude tuple
 def convert_bad_address_to_lat_long(address):
+    # api information 
     api_key = key
 
     url = f"https://addressvalidation.googleapis.com/v1:validateAddress?key={api_key}"
@@ -121,6 +123,7 @@ def validate_bounds(bounds):
     long_check = abs(bounds["high"]["longitude"] - bounds["low"]["longitude"]) < 0.1
     return lat_check and long_check
 
+# the actual function that gets used in flasking.py
 def converter(bad_address, range):
     lat_long_tuple = convert_bad_address_to_lat_long(bad_address)
 
