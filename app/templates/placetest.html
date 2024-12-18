@@ -2,20 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Place Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Search Results - The First Step</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Places</h1>
-    <hr>
-    {% for place in places %}
-        <h3>{{place.name}}</h3>
-        <p>{{place.address}}, {{place.phone}}</p>
-        {% if place.imgSrc is not none %}
-            <img src={{place.imgSrc}} style="max-width: 90%;">
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-4">Search Results</h1>
+            <a href="/search" class="btn btn-outline-primary btn-lg">Return to Search</a>
+            <hr>
+        </div>
+
+        {% if places %}
+            <div class="row">
+                {% for place in places %}
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        {% if place.imgSrc is not none %}
+                        <img src="{{ place.imgSrc }}" class="card-img-top" alt="{{ place.name }}">
+                        {% else %}
+                        <img src="/static/no-image.png" class="card-img-top" alt="No Image Available">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ place.name }}</h5>
+                            <p class="card-text">
+                                {{ place.address }}<br>
+                                <strong>Phone:</strong> {{ place.phone }}
+                            </p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="{{ place.mapsLink }}" class="btn btn-primary btn-sm" target="_blank">Google Maps</a>
+                            <a href="{{ place.webLink }}" class="btn btn-secondary btn-sm" target="_blank">Website</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-center text-muted">No places found for your search.</p>
         {% endif %}
-            <p>No Image Available</p>
-        <a href="{{ place.mapsLink }}" target="_blank">Google Maps</a>
-        <a href="{{ place.webLink }}" target="_blank">Website</a>
-    {% endfor %}
+    </div>
 </body>
-</html>
+</html
