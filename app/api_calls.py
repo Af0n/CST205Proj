@@ -3,7 +3,7 @@ import json
 from place import Place
 from secret import key
 
-# returns a PIL image object from API
+# returns an image url from the api
 def picture_search(gID):
     api_key = key
     url = f"https://places.googleapis.com/v1/{gID}/media?key={api_key}&maxHeightPx=4800&skipHttpRedirect=true"
